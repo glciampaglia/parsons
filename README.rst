@@ -21,6 +21,59 @@ The use of Parsons puzzles is an evidence-based teaching practice.
 
 Based on `js-parsons <https://js-parsons.github.io/>`_ and inspired by `Python Tutor <http://pythontutor.com>`_.
 
+Installation
+------------
+
+This assumes you have [pyenv](https://github.com/pyenv/pyenv) and
+[pipenv](https://github.com/pypa/pipenv) installed. The first step is to create
+a new project. The project requires a particular Python version. Currently, the
+dependencies are based on Python 3.7.12, so we use pipenv.
+
+Note that building Python will likely require [some additional
+packages](https://github.com/pyenv/pyenv#suggested-build-environment) to make
+sure the build environment is correct.
+
+```
+pipenv --python 3.7.12
+```
+
+Next, we sync up the environment using the provided lockfile. Since one of the
+packages is SQLAlchemy, on my Ubuntu machine (Pop Os! 22.04 LTS), I needed to
+install the `libpq-dev` package to provide `pg_config`.
+
+```
+sudo apt install libpq-dev
+```
+
+Then we can sync:
+
+```
+pipenv sync
+```
+
+This will install all dependencies along with the `parsons` package itself.
+
+To run the program, this is just a Flask app, so we need specify what Python object will provide it. It turns out that this is provided by function `create_app()` in the `parsons` package. So we set an environment variable:
+
+```
+export FLASK_APP=parsons:create_app
+```
+
+Now we can create the database (by default using sqlite):
+
+```
+flask init-db
+```
+
+And finally we can run the Web app:
+
+```
+flask run -h localhost -p 8000
+```
+
+This will spin the Web app locally and have it listen on port 8000.
+
+
 Example
 -------
 ``find_max`` function:
