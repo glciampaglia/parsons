@@ -24,13 +24,12 @@ Based on `js-parsons <https://js-parsons.github.io/>`_ and inspired by `Python T
 Installation
 ------------
 
-This assumes you have [pyenv](https://github.com/pyenv/pyenv) and
-[pipenv](https://github.com/pypa/pipenv) installed. The first step is to create
+This assumes you have `pyenv <https://github.com/pyenv/pyenv>`_ and
+`pipenv <https://github.com/pypa/pipenv>`_ installed. The first step is to create
 a new project. The project requires a particular Python version. Currently, the
 dependencies are based on Python 3.7.12, so we use pipenv.
 
-Note that building Python will likely require [some additional
-packages](https://github.com/pyenv/pyenv#suggested-build-environment) to make
+Note that building Python will likely require `some additional packages <https://github.com/pyenv/pyenv\#suggested-build-environment>`_ to make
 sure the build environment is correct: ::
 
     pipenv --python 3.7.12
@@ -47,7 +46,7 @@ Then we can sync: ::
 
 This will install all dependencies along with the `parsons` package itself.
 
-To run the program, this is just a Flask app, so we need specify what Python object will provide it. It turns out that this is provided by function `create_app()` in the `parsons` package ([source](parsons/__init__.py). So we set an environment variable: ::
+To run the program, this is just a Flask app, so we need specify what Python object will provide it. It turns out that this is provided by function `create_app()` in the `parsons` package (`source <parsons/__init__.py>`_). So we set an environment variable: ::
 
     export FLASK_APP=parsons:create_app
 
